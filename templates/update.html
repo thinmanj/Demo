@@ -1,0 +1,18 @@
+{% extends "admin/base.html" %}
+{% block content %}
+	<h1>Update a Google Spreadsheet</h1>
+	<form action="." method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+	    {{ form }}
+	    <input type="submit" value="Update" />
+	</form>
+	</br>
+	<h3> SpreadSheet Process Messages</h3>
+	<ul>
+		{% for message in processMessages %}
+	  		<li type="circle">{{message}}</li>
+		{% empty %}
+	  		<li  type="circle">No Messages to display</li>
+		{% endfor %}
+	</ul>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "admin/base.html" %}
+{% block content %}
+	<h1>Display team</h1>
+	<form action="." method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+	    {{ form }}
+	    <input type="submit" value="Update" />
+	</form>
+	</br>
+	{% if teamData%}
+	<h2> Team List</h2>
+		<table>
+			<tr>
+				<th>Member</th>
+				<th>{{teamData.header.week1}}</th>
+				<th>{{teamData.header.week2}}</th>
+				<th>{{teamData.header.week3}}</th>
+				<th>{{teamData.header.week4}}</th>
+				<th>Total</th>
+			</tr>
+			{% for member in teamData.team %}
+				<tr>
+					<td>{{member.name}}</td>
+					<td align="right">{{member.week1}}</td>
+					<td align="right">{{member.week2}}</td>
+					<td align="right">{{member.week3}}</td>
+					<td align="right">{{member.week4}}</td>
+					<td align="right">{{member.total}}</td>
+				</tr>
+			{% empty %}
+				<tr>
+					<td colspan=6>No data found</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% endif %}
+{% endblock %}

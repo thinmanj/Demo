@@ -1,4 +1,4 @@
 Demo
 ====
 
-Demo Django Project
+Demo Django Project I've developed last year
